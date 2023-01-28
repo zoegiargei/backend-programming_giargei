@@ -7,7 +7,7 @@ class ProductManager{
 
         const product = new Products(title,description,price,thumbnail,code,stock)
 
-        if(Object.values(product).some(atribute => (atribute === ''))){
+        if(Object.values(product).some(atribute => (atribute === '' || atribute == undefined))){
 
             //throw new Error("Todos los campos del producto deben estar completos")
             return console.log("Todos los campos del producto deben estar completos")
@@ -58,8 +58,8 @@ class Products{
 }
 
 //Pruebas de uso
-
 const productManager1 = new ProductManager();
+
 //Show empty array
 console.log(productManager1.getProducts())
 
@@ -73,6 +73,7 @@ productManager1.addProduct({title:"Destornillador", description:"Herramienta de 
 
 //Add a product with EMPTY FIELD:
 productManager1.addProduct({title:"Taladro", description:"", price:1000, thumbnail:"url", code:"code125", stock:100});
+productManager1.addProduct({title:"Taladro", price:1000, thumbnail:"url", code:"code125", stock:100});
 
 //Get products array
 console.log(productManager1.getProducts())
